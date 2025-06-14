@@ -1,0 +1,36 @@
+Generating image for segment 1: The only true wisdom is in knowing you know nothin...
+Generating image with prompt: Ancient Greek marble statue, classical Athens architecture, golden hour lighting, philosophical wisdom, cinematic photography, detailed, 8K resolution, masterpiece
+Generating with Flux.1-schnell (no content filters)...
+10:23:39 AM [express] GET /api/videos/1/status 200 in 8ms :: {"status":"generating","videoUrl":null,"…
+Flux.1-schnell image generated successfully for segment 1
+AI image 1 generated successfully
+Generating image for segment 2: An unexamined life is not worth living...
+Generating image with prompt: Roman temple with columns, ancient scrolls, olive branches, Mediterranean landscape, cinematic photography, detailed, 8K resolution, masterpiece
+Generating with Flux.1-schnell (no content filters)...
+10:23:42 AM [express] GET /api/videos/1/status 304 in 7ms :: {"status":"generating","videoUrl":null,"…
+Flux.1-schnell image generated successfully for segment 2
+AI image 2 generated successfully
+Generating image for segment 3: I cannot teach anybody anything...
+10:23:45 AM [express] GET /api/videos/1/status 304 in 6ms :: {"status":"generating","videoUrl":null,"…
+Failed to get image 3: Error: ffmpeg exited with code 234: frame=    2 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.32 bitrate=N/A speed=2.35x    
+Conversion failed!
+
+    at ChildProcess.<anonymous> (/home/runner/workspace/node_modules/fluent-ffmpeg/lib/processor.js:180:22)
+    at ChildProcess.emit (node:events:518:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+Video generation error: Error: ffmpeg exited with code 234: frame=    2 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.36 bitrate=N/A speed= 3.4x    
+Conversion failed!
+
+    at ChildProcess.<anonymous> (/home/runner/workspace/node_modules/fluent-ffmpeg/lib/processor.js:180:22)
+    at ChildProcess.emit (node:events:518:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+Background video generation failed: Error: ffmpeg exited with code 234: frame=    2 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.36 bitrate=N/A speed= 3.4x    
+Conversion failed!
+
+    at ChildProcess.<anonymous> (/home/runner/workspace/node_modules/fluent-ffmpeg/lib/processor.js:180:22)
+    at ChildProcess.emit (node:events:518:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+Error details: ffmpeg exited with code 234: frame=    2 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.36 bitrate=N/A speed= 3.4x    
+Conversion failed!
+
+10:23:48 AM [express] GET /api/videos/1/status 200 in 7ms :: {"status":"failed","videoUrl":null,"audi…

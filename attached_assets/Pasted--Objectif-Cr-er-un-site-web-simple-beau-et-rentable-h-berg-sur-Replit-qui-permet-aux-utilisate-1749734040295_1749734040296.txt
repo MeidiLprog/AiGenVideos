@@ -1,0 +1,187 @@
+ Objectif :
+Créer un site web simple, beau et rentable, hébergé sur Replit, qui permet aux utilisateurs de :
+
+Se connecter facilement (avec Google ou e-mail)
+
+Entrer un sujet ou un texte
+
+Générer automatiquement un script court (5 à 30 secondes) via GPT
+
+Générer une voix-off à partir du script (via ElevenLabs ou Google TTS)
+
+Créer une vidéo courte avec fond, sous-titres animés et audio
+
+Gérer leur compte et crédits (ex : 3 vidéos gratuites, puis paiement)
+
+Exporter ou partager la vidéo générée
+
+🧱 Stack utilisée
+Fonction	Outils/Tech
+Hébergement	Replit (React + Node/Express dans le même Repl)
+Frontend	React + Tailwind CSS
+Authentification	Firebase Auth (avec Google Sign-in)
+GPT pour script	OpenAI API (tu l’as déjà)
+Voix-off (TTS)	ElevenLabs API (ou Google TTS)
+Génération vidéo	Shotstack API (freemium) OU ffmpeg.wasm
+Base de données	Replit DB (@replit/database)
+Paiement (plus tard)	Stripe
+
+🧭 Plan complet (étapes à suivre)
+✅ 1. Configuration du projet
+Crée un nouveau Repl de type "Node.js"
+
+Dans index.js, démarre un serveur Express.js
+
+Installe les dépendances nécessaires :
+
+bash
+Copier
+Modifier
+npm install express cors openai firebase-admin @replit/database
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+Crée une structure comme ceci :
+
+bash
+Copier
+Modifier
+/src
+  /components
+  /pages
+  App.jsx
+  index.jsx
+server.js
+.replit
+tailwind.config.js
+index.html
+✅ 2. Authentification Firebase (avec Google)
+Crée un projet Firebase
+
+Active l’authentification Google + Email/Password
+
+Dans ton projet Replit :
+
+Ajoute le SDK Firebase au frontend (firebase/app, firebase/auth)
+
+Dans App.jsx, gère la connexion et la déconnexion
+
+Sur le backend (Node.js), vérifie les tokens pour sécuriser les routes
+
+✅ 3. Interface React (frontend)
+Utilise Tailwind CSS pour un design propre :
+
+Page d’accueil :
+
+Logo + texte de présentation
+
+CTA : “Créer ma vidéo courte”
+
+Page utilisateur (après connexion) :
+
+Champ de texte (ex : "Donne-moi un conseil sur la productivité")
+
+Bouton "Générer le script"
+
+Lecture audio du script (voix-off)
+
+Aperçu texte synchronisé (sous-titres animés)
+
+Bouton "Générer la vidéo"
+
+Affichage du nombre de crédits
+
+✅ 4. Appel GPT pour générer le script
+Backend :
+
+Crée une route POST /generate-script
+
+Utilise openai pour transformer le texte de l’utilisateur en script vidéo de 5–30s max
+
+Exemple prompt :
+
+js
+Copier
+Modifier
+"Écris-moi un script de 20 secondes max pour une vidéo TikTok sur le thème suivant : [sujet]"
+✅ 5. Génération de la voix-off (TTS)
+Crée une route /generate-voice qui :
+
+Prend le script
+
+Appelle ElevenLabs API ou Google TTS
+
+Retourne un lien audio (.mp3) à jouer ou à intégrer dans la vidéo
+
+✅ 6. Sous-titres animés + affichage
+Dans React, utilise setTimeout pour afficher chaque mot du script avec un effet animé.
+
+(Optionnel) Ajoute une timeline ou barre de progression.
+
+✅ 7. Génération de la vidéo finale
+Deux options :
+
+A. Facile (Shotstack API) – Recommandé pour MVP
+Envoie le fond vidéo (fixe ou stock), l’audio et le texte
+
+Shotstack te retourne un lien .mp4 prêt à être téléchargé
+
+B. Gratuit mais technique (ffmpeg.wasm)
+Assemble l’audio, l’image de fond et les sous-titres dans le navigateur
+
+Exporte localement en .mp4 (plus lent, mais no cost)
+
+✅ 8. Système de crédits
+Utilise Replit DB pour stocker :
+
+user_id, credits, history, etc.
+
+Chaque génération de vidéo consomme 1 crédit
+
+Par défaut : 3 crédits gratuits
+
+Si credits <= 0 → Afficher message “Plus de crédits, upgrade ton plan”
+
+✅ 9. Paiement (facultatif à ce stade)
+Intègre Stripe Checkout plus tard pour vendre :
+
+5 crédits → 4,99€
+
+20 crédits → 14,99€
+
+Abonnement mensuel illimité → 9,99€/mois
+
+🎨 Design UI (simple et moderne)
+Fond clair ou dégradé doux
+
+Sections bien espacées (padding généreux)
+
+Animations légères (FadeIn, SlideUp avec Framer Motion)
+
+Boutons arrondis, ombres douces
+
+Police moderne (Inter ou Poppins)
+
+✅ Résultat final attendu
+Une interface belle, fluide et responsive
+
+Un utilisateur se connecte (Google ou email)
+
+Il entre une idée → GPT génère un script
+
+TTS transforme ça en audio
+
+L’utilisateur voit une preview animée + peut télécharger la vidéo
+
+Les crédits sont gérés
+
+Tu es prêt à vendre !
+
+Souhaites-tu maintenant que je te génère le starter Replit prêt à coder avec structure + React + DB + GPT déjà branchés ?
+
+
+
+
+
+
+
+
